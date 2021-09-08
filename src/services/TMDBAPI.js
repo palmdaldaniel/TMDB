@@ -6,6 +6,7 @@
  */
 
 import axios from "axios";
+import { sortInAscOrder } from "../utils/sortArrayInAsc";
 
 const apiKey = "0dd7b23e90e1f5fb99986582b77937d0";
 
@@ -30,5 +31,31 @@ const get = async (endpoint) => {
 
 export const getNowPlaying = async () => {
   const data = await get(`/movie/now_playing?api_key=${apiKey}&region=se`);
+  return data.data;
+};
+
+/**
+ *
+ * get most popular movies  in sweden right now
+ *
+ */
+
+export const getPopular = async () => {
+  const data = await get(`/movie/popular?api_key=${apiKey}&region=se`);
+
+  // sort returning data in ascending order based on vote-average
+  const sorted = sortInAscOrder(data?.data?.results);
+
+  return sorted;
+};
+
+/**
+ * get top rated movies in sweden
+ *
+ */
+
+export const getTopRated = async () => {
+  const data = await get(`/movie/top_rated?api_key=${apiKey}&region=se`);
+
   return data.data;
 };
