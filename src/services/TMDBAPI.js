@@ -60,9 +60,20 @@ export const getTopRated = async () => {
   return data.data;
 };
 
+
+// get list of genres
 export const getGenres = async () => {
-  const data = await get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`)
+  const data = await get(`genre/movie/list?api_key=${apiKey}`)
   
   return data.data
+}
+
+
+//get movies by genre
+//https://api.themoviedb.org/3/discover/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&with_genres=35&page=10
+export const getMoviesInGenre = async (genreId, page) => {
+  const data = await get(`/discover/movie?api_key=${apiKey}&with_genres=35`)
+
+ return data.data
 
 }

@@ -1,28 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Container, ListGroup } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { useParams } from "react-router";
 import { useQuery } from "react-query";
-import { getGenres } from "../services/TMDBAPI";
-import Spinner from "../components/Spinner";
+import { getMoviesInGenre } from "../services/TMDBAPI";
 
 const GenrePage = () => {
-  const { data, isError, isLoading, error } = useQuery("genres", getGenres);
+  const { id } = useParams();
 
-  if (isError) return <div className="text-center py-5">{error}</div>;
-
-  return (
-    <Container className="d-flex justify-content-center">
-      <ListGroup variant="flush" style={{ width: "90%" }}>
-        {isLoading && <Spinner />}
-        {data &&
-          data.genres.map((genre, i) => (
-            <ListGroup.Item key={i}>
-              <Link to="/">{genre.name}</Link>
-            </ListGroup.Item>
-          ))}
-      </ListGroup>
-    </Container>
+  const { data, isError, isLoading, error } = useQuery(["genre", id], () =>
+    getMoviesInGenre(id)
   );
+
+  return <Container>Give me some movvvvies in specific genre 🌵 </Container>;
 };
 
 export default GenrePage;
