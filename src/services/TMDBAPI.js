@@ -6,7 +6,6 @@
  */
 
 import axios from "axios";
-import { sortInAscOrder } from "../utils/sortArrayInAsc";
 
 const apiKey = "0dd7b23e90e1f5fb99986582b77937d0";
 
@@ -40,15 +39,16 @@ export const getNowPlaying = async () => {
  *
  * // use this one instead
  * /discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10
+ * https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=10&api_key=0dd7b23e90e1f5fb99986582b77937d0
  */
 
 export const getPopular = async () => {
-  const data = await get(`/movie/popular?api_key=${apiKey}&region=se`);
+  const data = await get(`/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&&region=se&api_key=${apiKey}`);
 
   // sort returning data in ascending order based on vote-average
-  const sorted = sortInAscOrder(data?.data?.results);
+  //const sorted = sortInAscOrder(data?.data?.results);
 
-  return sorted;
+  return data.data;
 };
 
 /**
@@ -80,7 +80,6 @@ export const getMoviesInGenre = async (genreId, page) => {
 };
 
 // get movie by id
-// https://api.themoviedb.org/3/movie/784500?api_key=0dd7b23e90e1f5fb99986582b77937d0
 export const getMovieById = async (id) => {
   const data = await get(`/movie/${id}?api_key=${apiKey}`);
   return data.data;

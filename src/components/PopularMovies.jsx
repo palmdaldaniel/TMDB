@@ -10,6 +10,9 @@ import MovieCard from "./MovieCard";
 const PopularMovies = () => {
   const { data, isLoading, isError, error } = useQuery("popular", getPopular);
 
+  console.log(data);
+
+  
   if (isError) return <div>{error}</div>;
 
   return (
@@ -17,7 +20,7 @@ const PopularMovies = () => {
       {isLoading && <Spinner />}
       <Row>
         {data &&
-          data.slice(0, 4).map((movie, i) => {
+          data.results.slice(0, 4).map((movie, i) => {
             return (
               <Col key={i} sm={12} md={3}>
                 <MovieCard movie={movie} />{" "}

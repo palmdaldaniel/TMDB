@@ -12,7 +12,7 @@ const HomePage = () => {
       <CinemaMovies />
       <h3 className="mt-5">Populäraste filmerna</h3>
       <PopularMovies />
-      <h3 className="mt-5">Toprankade filmer</h3>
+      <h3 className="mt-5">Topprankade filmer</h3>
       <TopRankedMovies />
      
 
