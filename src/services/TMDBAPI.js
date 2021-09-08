@@ -38,6 +38,8 @@ export const getNowPlaying = async () => {
  *
  * get most popular movies  in sweden right now
  *
+ * // use this one instead
+ * /discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10
  */
 
 export const getPopular = async () => {
@@ -50,7 +52,7 @@ export const getPopular = async () => {
 };
 
 /**
- * 
+ *
  * get top rated movies in sweden
  */
 
@@ -60,20 +62,26 @@ export const getTopRated = async () => {
   return data.data;
 };
 
-
 // get list of genres
 export const getGenres = async () => {
-  const data = await get(`genre/movie/list?api_key=${apiKey}`)
-  
-  return data.data
-}
+  const data = await get(`/genre/movie/list?api_key=${apiKey}`);
 
+  return data.data;
+};
 
 //get movies by genre
 //https://api.themoviedb.org/3/discover/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&with_genres=35&page=10
 export const getMoviesInGenre = async (genreId, page) => {
-  const data = await get(`/discover/movie?api_key=${apiKey}&with_genres=${genreId}`)
+  const data = await get(
+    `/discover/movie?api_key=${apiKey}&with_genres=${genreId}`
+  );
 
- return data.data
+  return data.data;
+};
 
-}
+// get movie by id
+// https://api.themoviedb.org/3/movie/784500?api_key=0dd7b23e90e1f5fb99986582b77937d0
+export const getMovieById = async (id) => {
+  const data = await get(`/movie/${id}?api_key=${apiKey}`);
+  return data.data;
+};

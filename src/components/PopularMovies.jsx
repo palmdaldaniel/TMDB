@@ -12,9 +12,6 @@ const PopularMovies = () => {
 
   if (isError) return <div>{error}</div>;
 
-
-  console.log(data);
-
   return (
     <Container>
       {isLoading && <Spinner />}

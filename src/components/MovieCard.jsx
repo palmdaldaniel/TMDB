@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Card, Button } from "react-bootstrap";
 
@@ -13,10 +14,14 @@ const MovieCard = ({ movie }) => {
         <Card.Text>{movie.overview.slice(0, 100)} ...</Card.Text>
         <Card.Text>{`Släpps: ${movie["release_date"]}`}</Card.Text>
         <Card.Text>{`Rating: ${movie["vote_average"]}`}</Card.Text>
-        <Button variant="primary">Gå till film 👣 </Button>
+        <Link to={`/movie/${movie.id}`}>
+          <Button style={{ width: "100%" }} variant="primary">
+            Gå till film 👣
+          </Button>
+        </Link>
       </Card.ImgOverlay>
     </Card>
-  );  
+  );
 };
 
 export default MovieCard;
