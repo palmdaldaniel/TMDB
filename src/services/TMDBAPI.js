@@ -50,8 +50,8 @@ export const getPopular = async () => {
 };
 
 /**
+ * 
  * get top rated movies in sweden
- *
  */
 
 export const getTopRated = async () => {
@@ -59,3 +59,10 @@ export const getTopRated = async () => {
 
   return data.data;
 };
+
+export const getGenres = async () => {
+  const data = await get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`)
+  
+  return data.data
+
+}
