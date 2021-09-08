@@ -11,8 +11,8 @@ const GenrePage = () => {
   if (isError) return <div className="text-center py-5">{error}</div>;
 
   return (
-    <Container>
-      <ListGroup variant="flush">
+    <Container className="d-flex justify-content-center">
+      <ListGroup variant="flush" style={{ width: "90%" }}>
         {isLoading && <Spinner />}
         {data &&
           data.genres.map((genre, i) => (

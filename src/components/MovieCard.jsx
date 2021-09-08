@@ -16,7 +16,7 @@ const MovieCard = ({ movie }) => {
         <Button variant="primary">Gå till film 👣 </Button>
       </Card.ImgOverlay>
     </Card>
-  );
+  );  
 };
 
 export default MovieCard;
