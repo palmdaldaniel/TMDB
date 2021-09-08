@@ -72,7 +72,7 @@ export const getGenres = async () => {
 //get movies by genre
 //https://api.themoviedb.org/3/discover/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&with_genres=35&page=10
 export const getMoviesInGenre = async (genreId, page) => {
-  const data = await get(`/discover/movie?api_key=${apiKey}&with_genres=35`)
+  const data = await get(`/discover/movie?api_key=${apiKey}&with_genres=${genreId}`)
 
  return data.data
 
