@@ -5,6 +5,9 @@ import HomePage from "./pages/HomePage";
 import GenreListPage from "./pages/GenreListPage";
 import GenrePage from "./pages/GenrePage";
 import MoviePage from  "./pages/MoviePage";
+import MoviesOnCinemaPage from "./pages/MoviesOnCinemaPage";
+import TopRatedMoviesPage from "./pages/TopRatedMovies";
+
 function App() {
   return (
     <div className="App">
@@ -21,6 +24,13 @@ function App() {
         </Route>
         <Route path="/genre">
           <GenreListPage />
+        </Route>
+        <Route path="/cinema">
+          <MoviesOnCinemaPage />
+        </Route>
+        <Route path="/top-rated">
+          <TopRatedMoviesPage />
+    
         </Route>
       </Switch>
     </div>

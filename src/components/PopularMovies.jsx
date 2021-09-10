@@ -9,9 +9,6 @@ import MovieCard from "./MovieCard";
 
 const PopularMovies = () => {
   const { data, isLoading, isError, error } = useQuery("popular", getPopular);
-
-  console.log(data);
-
   
   if (isError) return <div>{error}</div>;
 
@@ -23,7 +20,7 @@ const PopularMovies = () => {
           data.results.slice(0, 4).map((movie, i) => {
             return (
               <Col key={i} sm={12} md={3}>
-                <MovieCard movie={movie} />{" "}
+                <MovieCard movie={movie} />
               </Col>
             );
           })}
