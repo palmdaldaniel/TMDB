@@ -18,8 +18,6 @@ const MoviePage = () => {
 
   return (
     <Container>
-
-    {/* Wait for data to be loaded */}
       {data && (
         <>
           <Card
