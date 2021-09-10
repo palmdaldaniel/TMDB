@@ -43,7 +43,9 @@ export const getNowPlaying = async () => {
  */
 
 export const getPopular = async () => {
-  const data = await get(`/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&&region=se&api_key=${apiKey}`);
+  const data = await get(
+    `/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&&region=se&api_key=${apiKey}`
+  );
 
   // sort returning data in ascending order based on vote-average
   //const sorted = sortInAscOrder(data?.data?.results);
@@ -66,7 +68,7 @@ export const getTopRated = async () => {
 export const getGenres = async () => {
   const data = await get(`/genre/movie/list?api_key=${apiKey}`);
 
-  return data.data; 
+  return data.data;
 };
 
 //get movies by genre
@@ -81,6 +83,27 @@ export const getMoviesInGenre = async (genreId, page) => {
 
 // get movie by id
 export const getMovieById = async (id) => {
-  const data = await get(`/movie/${id}?&append_to_response=credits&api_key=${apiKey}`);
+  const data = await get(
+    `/movie/${id}?&append_to_response=credits&api_key=${apiKey}`
+  );
   return data.data;
+};
+
+
+// is called in getActorById
+const getMoviesForActor = async (id) => {
+  const data = await get(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_people=${id}`
+  );
+  return data.data;
+};
+
+
+// get actor by id
+
+export const getActorById = async (id) => {
+  const data = await get(`/person/${id}?api_key=${apiKey}`);
+  // make request for the actors movies and combine in respons.
+  const movies = await getMoviesForActor(id);
+  return { movies, actor: data.data };
 };

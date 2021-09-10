@@ -10,7 +10,7 @@ const prefix = "https://image.tmdb.org/t/p/w400/";
 const MoviePage = () => {
   const { id } = useParams();
 
-  const { data, isLoading, isError, error } = useQuery(["movie, id"], () =>
+  const { data, isLoading, isError, error } = useQuery(["movie", id], () =>
     getMovieById(id)
   );
 
