@@ -11,14 +11,15 @@ import Pagination from "./partials/Pagination";
 
 const GenrePage = () => {
   const [searchParams, setSearchParams] = useUrlSearchParams(
-    { page: 1, q: "" },
+    { page: 1 },
     { page: Number }
   );
   const [page, setPage] = useState(searchParams.page);
+  const [total] = useState(500)
   const { id } = useParams();
 
   useEffect(() => {
-    setSearchParams({ ...searchParams, page });
+    setSearchParams({page});
   }, [page]);
 
   const { data, isError, isLoading, error, isPreviousData } = useQuery(
@@ -38,6 +39,7 @@ const GenrePage = () => {
         page={page}
         setPage={setPage}
         isPreviousData={isPreviousData}
+        total={total}
       />
       <Row>
         {data &&
