@@ -66,7 +66,7 @@ export const getTopRated = async () => {
 export const getGenres = async () => {
   const data = await get(`/genre/movie/list?api_key=${apiKey}`);
 
-  return data.data;
+  return data.data; 
 };
 
 //get movies by genre
@@ -81,6 +81,6 @@ export const getMoviesInGenre = async (genreId, page) => {
 
 // get movie by id
 export const getMovieById = async (id) => {
-  const data = await get(`/movie/${id}?api_key=${apiKey}`);
+  const data = await get(`/movie/${id}?&append_to_response=credits&api_key=${apiKey}`);
   return data.data;
 };
