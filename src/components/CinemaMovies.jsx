@@ -16,6 +16,8 @@ const CinemaMovies = () => {
     getNowPlaying
   );
 
+  console.log(data);
+
   if (isError) return <div>{error}</div>;
 
   return (

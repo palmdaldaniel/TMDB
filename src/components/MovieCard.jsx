@@ -6,7 +6,6 @@ import { Card, Button } from "react-bootstrap";
 const prefix = "https://image.tmdb.org/t/p/w400/";
 
 const MovieCard = ({ movie }) => {
-
   
   return (
     <Card style={{ width: "18rem" }} className="bg-dark text-white">

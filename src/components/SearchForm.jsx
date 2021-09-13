@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
-const SearchForm = ({ query }) => {
-  // if prop query is defined set form value to query else set form value to empty string ''
-  const [text, setText] = useState(!query ? "" : query);
-  const history = useHistory();
+const SearchForm = ({ queryMovie, query }) => {
+  
+
+  const [text, setText] = useState(query);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(text);
-    history.push(`/search/${text}`);
+    queryMovie(text);
   };
 
   return (
@@ -24,7 +24,10 @@ const SearchForm = ({ query }) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <Button type="submit">Search</Button>
+        <Button type="submit" onSubmit={handleSubmit}>
+          {" "}
+          Search
+        </Button>
       </Form.Group>
     </Form>
   );

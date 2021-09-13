@@ -6,6 +6,8 @@ const prefix = "https://image.tmdb.org/t/p/w400/";
 
 const MovieList = ({ movies }) => {
   console.log(movies);
+  
+  
   return (
     <ListGroup>
       <Row>

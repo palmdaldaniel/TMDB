@@ -89,7 +89,6 @@ export const getMovieById = async (id) => {
   return data.data;
 };
 
-
 // is called in getActorById
 const getMoviesForActor = async (id) => {
   const data = await get(
@@ -98,7 +97,6 @@ const getMoviesForActor = async (id) => {
   return data.data;
 };
 
-
 // get actor by id
 
 export const getActorById = async (id) => {
@@ -106,4 +104,16 @@ export const getActorById = async (id) => {
   // make request for the actors movies and combine in respons.
   const movies = await getMoviesForActor(id);
   return { movies, actor: data.data };
+};
+
+// query for movie
+
+// https://api.themoviedb.org/3/search/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&query=Jack+Reacher
+
+export const getMoviesByQuery = async (query) => {
+
+  if(!query.q) return
+  const data = await get(`/search/movie?api_key=${apiKey}&query=${query.q}`);
+
+  return data.data;
 };

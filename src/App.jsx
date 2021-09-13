@@ -40,7 +40,7 @@ function App() {
         <Route path="/actor/:id">
           <ActorPage/>
         </Route>
-        <Route path="/search/:query">
+        <Route path="/search">
           <SearchPage/>
         </Route>
       </Switch>
