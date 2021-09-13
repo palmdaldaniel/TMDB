@@ -9,6 +9,7 @@ import MoviesOnCinemaPage from "./pages/MoviesOnCinemaPage";
 import TopRatedMoviesPage from "./pages/TopRatedMovies";
 import MostPopularMoviesPage from "./pages/MostPopularMoviesPage"
 import ActorPage from "./pages/ActorPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/actor/:id">
           <ActorPage/>
+        </Route>
+        <Route path="/search/:query">
+          <SearchPage/>
         </Route>
       </Switch>
     </div>
