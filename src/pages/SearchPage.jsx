@@ -25,12 +25,18 @@ const Searchpage = () => {
     }
   );
 
+  console.log(data);
   const queryMovie = (query) => {
+
     setSearchQuery(query);
+    setPage(1)
+
   };
 
   useEffect(() => {
-    setParams({ ...params, page, q: searchQuery });
+    setParams({ ...params,
+               page,
+               q: searchQuery });
   }, [page, searchQuery]);
 
   if (isError) return <div>{error}</div>;
