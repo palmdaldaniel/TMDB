@@ -10,6 +10,7 @@ export const prefix = "https://image.tmdb.org/t/p/w400/"
 
 import axios from "axios";
 
+
 const apiKey = "0dd7b23e90e1f5fb99986582b77937d0";
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";

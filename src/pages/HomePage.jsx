@@ -10,7 +10,7 @@ import TopRankedMovies from '../components/TopRankedMovies'
 const HomePage = () => {
   return (
     <Container>
-    {/*   <SearchForm /> */}
+      <SearchForm />
       <h3 className="mt-5">Filmer på bio just nu</h3>
       <CinemaMovies />
       <h3 className="mt-5">Populäraste filmerna</h3>

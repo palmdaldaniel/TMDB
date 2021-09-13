@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router";
 
-const SearchForm = ({ queryMovie, query }) => {
+import { useQueryContext } from "../contexts/QueryContextProvider";
+
+const SearchForm = () => {
   
+  const { inputText, setInputText } = useQueryContext();
 
-  const [text, setText] = useState(query);
+  const [text, setText] = useState("");
 
+  const history = useHistory();
+
+  // get pathname in order to determine if you want to run history.push or not.
+  const { pathname } = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    queryMovie(text);
+
+    if (pathname === "/") {
+      setInputText(text);
+      history.push("/search");
+    } else setInputText(text);
+
     setText('')
   };
 
