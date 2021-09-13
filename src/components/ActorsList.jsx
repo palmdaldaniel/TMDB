@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col, ListGroup, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { prefix } from "../services/TMDBAPI";
 
-const prefix = "https://image.tmdb.org/t/p/w400/";
 
 const ActorsList = ({ actors }) => {
   return (

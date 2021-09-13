@@ -2,11 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Card, Button } from "react-bootstrap";
-
-const prefix = "https://image.tmdb.org/t/p/w400/";
+import { prefix } from "../services/TMDBAPI";
 
 const MovieCard = ({ movie }) => {
-  
   return (
     <Card style={{ width: "18rem" }} className="bg-dark text-white">
       <Card.Img src={`${prefix}${movie["poster_path"]}`} />

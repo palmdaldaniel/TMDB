@@ -4,8 +4,8 @@ import { useParams } from "react-router";
 import { useQuery } from "react-query";
 import { getMovieById } from "../services/TMDBAPI";
 import ActorsList from "../components/ActorsList";
+import { prefix } from "../services/TMDBAPI";
 
-const prefix = "https://image.tmdb.org/t/p/w400/";
 
 const MoviePage = () => {
   const { id } = useParams();

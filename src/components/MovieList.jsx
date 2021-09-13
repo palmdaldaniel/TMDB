@@ -2,10 +2,8 @@ import React from "react";
 import { Row, Col, ListGroup, Image, ListGroupItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const prefix = "https://image.tmdb.org/t/p/w400/";
-
 const MovieList = ({ movies }) => {
-  console.log(movies);
+
   
   
   return (
