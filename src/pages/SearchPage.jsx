@@ -18,25 +18,22 @@ const Searchpage = () => {
 
   const [page, setPage] = useState(params.page);
 
-  const { data, isLoading, isError, error, isPreviousData } = useQuery(["movies", params], () =>
-    getMoviesByQuery(params),
+  const { data, isLoading, isError, error, isPreviousData } = useQuery(
+    ["movies", params],
+    () => getMoviesByQuery(params),
     {
-      keepPreviousData: true
+      keepPreviousData: true,
     }
   );
 
   console.log(data);
   const queryMovie = (query) => {
-
     setSearchQuery(query);
-    setPage(1)
-
+    setPage(1);
   };
 
   useEffect(() => {
-    setParams({ ...params,
-               page,
-               q: searchQuery });
+    setParams({ ...params, page, q: searchQuery });
   }, [page, searchQuery]);
 
   if (isError) return <div>{error}</div>;
@@ -57,13 +54,14 @@ const Searchpage = () => {
             );
           })
         )}
-       { data && data['total_pages'] > 1 &&
-        <Pagination
-          page={page}
-          setPage={setPage}
-          isPreviousData={isPreviousData}
-          total={data['total_pages']}
-        />}
+        {data && data["total_pages"] > 1 && (
+          <Pagination
+            page={page}
+            setPage={setPage}
+            isPreviousData={isPreviousData}
+            total={data["total_pages"]}
+          />
+        )}
       </Row>
     </Container>
   );

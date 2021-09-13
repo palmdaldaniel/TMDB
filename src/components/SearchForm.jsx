@@ -10,8 +10,8 @@ const SearchForm = ({ queryMovie, query }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     queryMovie(text);
+    setText('')
   };
 
   return (

@@ -10,6 +10,7 @@ import TopRatedMoviesPage from "./pages/TopRatedMovies";
 import MostPopularMoviesPage from "./pages/MostPopularMoviesPage"
 import ActorPage from "./pages/ActorPage";
 import SearchPage from "./pages/SearchPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
         <Route path="/search">
           <SearchPage/>
         </Route>
+        <Route path="*">
+            <NotFoundPage />
+          </Route>
       </Switch>
     </div>
   );
