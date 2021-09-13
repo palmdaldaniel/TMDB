@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useEffect} from "react";
+import React, { useContext, createContext, useState, useEffect } from "react";
 
 const QueryContext = createContext();
 
@@ -7,17 +7,11 @@ export const useQueryContext = () => {
 };
 
 const QueryContextProvider = ({ children }) => {
-  const [inputText, setInputText] = useState('');
-
-
-  
-
-
-
+  const [inputText, setInputText] = useState("");
 
   const values = {
     inputText,
-    setInputText
+    setInputText,
   };
 
   return (

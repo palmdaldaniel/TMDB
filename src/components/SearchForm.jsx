@@ -5,26 +5,14 @@ import { useHistory, useLocation } from "react-router";
 
 import { useQueryContext } from "../contexts/QueryContextProvider";
 
-const SearchForm = () => {
-  
-  const { inputText, setInputText } = useQueryContext();
+const SearchForm = ({ handleFormSubmit }) => {
+  const { inputText } = useQueryContext();
 
-  const [text, setText] = useState("");
-
-  const history = useHistory();
-
-  // get pathname in order to determine if you want to run history.push or not.
-  const { pathname } = useLocation();
+  const [text, setText] = useState(inputText);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (pathname === "/") {
-      setInputText(text);
-      history.push("/search");
-    } else setInputText(text);
-
-    setText('')
+    handleFormSubmit(text);
   };
 
   return (

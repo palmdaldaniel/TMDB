@@ -8,13 +8,15 @@ import Spinner from "../components/Spinner";
 import MovieCard from "../components/MovieCard";
 import Pagination from "./partials/Pagination";
 
+import { useQueryContext } from "../contexts/QueryContextProvider";
+
 const Searchpage = () => {
+  const { inputText, setInputText } = useQueryContext();
+
   const [params, setParams] = useUrlSearchParams(
-    { page: 1, q: "" },
+    { page: 1, q: inputText },
     { page: Number }
   );
-
-  const [searchQuery, setSearchQuery] = useState("");
 
   const [page, setPage] = useState(params.page);
 
@@ -26,21 +28,21 @@ const Searchpage = () => {
     }
   );
 
-  console.log(data);
-  const queryMovie = (query) => {
-    setSearchQuery(query);
+
+  const handleFormSubmit = (query) => {
+    setInputText(query);
     setPage(1);
-  };
+  }
 
   useEffect(() => {
-    setParams({ ...params, page, q: searchQuery });
-  }, [page, searchQuery]);
+    setParams({ ...params, page, q: inputText });
+  }, [page, inputText]);
 
   if (isError) return <div>{error}</div>;
 
   return (
     <Container>
-      <SearchForm queryMovie={queryMovie} query={params.q} />
+      <SearchForm  handleFormSubmit={handleFormSubmit} />
       {isLoading && <Spinner />}
       <Row>
         {data && data.results.length === 0 ? (
