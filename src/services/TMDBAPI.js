@@ -113,7 +113,7 @@ export const getActorById = async (id) => {
 export const getMoviesByQuery = async (query) => {
 
   if(!query.q) return
-  const data = await get(`/search/movie?api_key=${apiKey}&query=${query.q}`);
+  const data = await get(`/search/movie?api_key=${apiKey}&query=${query.q}&page=${query.page}`);
 
   return data.data;
 };

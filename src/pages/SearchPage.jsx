@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useLocation } from "react-router";
 import SearchForm from "../components/SearchForm";
 import { useUrlSearchParams } from "use-url-search-params";
 import { getMoviesByQuery } from "../services/TMDBAPI";
 import { useQuery } from "react-query";
 import Spinner from "../components/Spinner";
 import MovieCard from "../components/MovieCard";
+import Pagination from "./partials/Pagination";
 
 const Searchpage = () => {
   const [params, setParams] = useUrlSearchParams(
@@ -18,8 +18,11 @@ const Searchpage = () => {
 
   const [page, setPage] = useState(params.page);
 
-  const { data, isLoading, isError, error } = useQuery(["movies", params], () =>
-    getMoviesByQuery(params)
+  const { data, isLoading, isError, error, isPreviousData } = useQuery(["movies", params], () =>
+    getMoviesByQuery(params),
+    {
+      keepPreviousData: true
+    }
   );
 
   const queryMovie = (query) => {
@@ -28,7 +31,7 @@ const Searchpage = () => {
 
   useEffect(() => {
     setParams({ ...params, page, q: searchQuery });
-  }, [searchQuery]);
+  }, [page, searchQuery]);
 
   if (isError) return <div>{error}</div>;
 
@@ -48,6 +51,11 @@ const Searchpage = () => {
             );
           })
         )}
+        <Pagination
+          page={page}
+          setPage={setPage}
+          isPreviousData={isPreviousData}
+        />
       </Row>
     </Container>
   );
