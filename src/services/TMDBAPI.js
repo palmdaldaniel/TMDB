@@ -44,15 +44,24 @@ export const getNowPlaying = async () => {
  * // use this one instead
  * /discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10
  * https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=10&api_key=0dd7b23e90e1f5fb99986582b77937d0
+ * 
+ * 
+ * 
+https://api.themoviedb.org/3/trending/movie/day?api_key=0dd7b23e90e1f5fb99986582b77937d0
+ * 
+ * 
  */
 
-export const getPopular = async () => {
-  const data = await get(
+
+export const getPopular = async (query) => {
+
+  console.log('in service', query)
+  /* const data = await get(
     `/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&&region=se&api_key=${apiKey}`
   );
+ */
 
-  // sort returning data in ascending order based on vote-average
-  //const sorted = sortInAscOrder(data?.data?.results);
+  const data = await get(`/trending/movie/${query}?api_key=${apiKey}&sort_by=vote_average.desc&vote_count.gte=1000&&region=se`)
 
   return data.data;
 };

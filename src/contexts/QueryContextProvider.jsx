@@ -2,6 +2,8 @@ import React, { useContext, createContext, useState, useEffect } from "react";
 
 const QueryContext = createContext();
 
+
+// custom hook to handle searchquery with redirects.
 export const useQueryContext = () => {
   return useContext(QueryContext);
 };
