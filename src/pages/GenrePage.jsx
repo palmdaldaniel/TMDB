@@ -15,11 +15,11 @@ const GenrePage = () => {
     { page: Number }
   );
   const [page, setPage] = useState(searchParams.page);
-  const [total] = useState(500)
+
   const { id } = useParams();
 
   useEffect(() => {
-    setSearchParams({page});
+    setSearchParams({ page });
   }, [page]);
 
   const { data, isError, isLoading, error, isPreviousData } = useQuery(
@@ -35,12 +35,14 @@ const GenrePage = () => {
   return (
     <Container>
       {isLoading && <Spinner />}
-      <Pagination
-        page={page}
-        setPage={setPage}
-        isPreviousData={isPreviousData}
-        total={total}
-      />
+      {data && (
+        <Pagination
+          page={page}
+          setPage={setPage}
+          isPreviousData={isPreviousData}
+          total={data["total_pages"]}
+        />
+      )}
       <Row>
         {data &&
           data.results.map((movie, i) => {

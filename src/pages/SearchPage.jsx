@@ -57,11 +57,13 @@ const Searchpage = () => {
             );
           })
         )}
+       { data && data['total_pages'] > 1 &&
         <Pagination
           page={page}
           setPage={setPage}
           isPreviousData={isPreviousData}
-        />
+          total={data['total_pages']}
+        />}
       </Row>
     </Container>
   );

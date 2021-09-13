@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 
 const Pagination = ({page, setPage, isPreviousData, total}) => {
+
 	return (
 		<div className="pagination d-flex justify-content-between align-items-center m-4">
 			<Button
