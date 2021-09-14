@@ -18,7 +18,7 @@ const MoviePage = () => {
 
   // save browshistory history to local storage
 
-  useLocalStorage('movies', data?.movie['original_title'] )
+  useLocalStorage('movies', data?.movie)
 
   
 

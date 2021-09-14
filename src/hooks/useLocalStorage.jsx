@@ -10,23 +10,22 @@ const useLocalStorage = (key, defaultValue = null) => {
 
   useEffect(() => {
 
-    let values = []
+    
+    let values = [];
+    // don't run this one if defaultValue is not set yeat
+    if (!defaultValue) return;
+   
+    const jsonValue = localStorage.getItem(key);
 
-        if(!defaultValue) return
-     // console.log(values.length);
-    const jsonValue = localStorage.getItem(key)
+    if (!jsonValue) {
 
-    if(!jsonValue) {
-        console.log('there is no value here,lets set one');
-        values.push(defaultValue)
-        localStorage.setItem(key, JSON.stringify(values)); 
+      values.push(defaultValue);
+      localStorage.setItem(key, JSON.stringify(values));
     } else {
-      values = JSON.parse(jsonValue) 
-      values.push(defaultValue)
-      localStorage.setItem(key, JSON.stringify(values)); 
+      values = JSON.parse(jsonValue);
+      values.push(defaultValue);
+      localStorage.setItem(key, JSON.stringify(values));
     }
-
-
   }, [defaultValue]);
 
   return [value, setValue];
