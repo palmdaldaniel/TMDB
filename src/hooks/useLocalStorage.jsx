@@ -14,20 +14,26 @@ const useLocalStorage = (key, defaultValue = null) => {
     if (!defaultValue) return;
 
     const jsonValue = localStorage.getItem(key);
-    
+
     if (!jsonValue) {
       values.push(defaultValue);
       localStorage.setItem(key, JSON.stringify(values));
     } else {
       values = JSON.parse(jsonValue);
 
-      // if value.length is bigger than 10 item, remove the last one and add the newest value to the top.
+      const exists = values.findIndex((value) => value.id === defaultValue.id);
+
+      if (exists !== -1) return;
+
+      // if value.length is bigger than 10 item, remove the last one and add the newest val  to the top.
+      // const alreadyExists = values.includes(value => console.log(value) )
+      //console.log(alreadyExists);
 
       if (values.length > 9) {
         values.pop();
         values.unshift(defaultValue);
         localStorage.setItem(key, JSON.stringify(values));
-        return
+        return;
       }
 
       values.unshift(defaultValue);

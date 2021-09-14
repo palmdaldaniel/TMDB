@@ -5,7 +5,6 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 const HistoryList = () => {
   const [value] = useLocalStorage("movies");
-  console.log("value :>>", value);
 
   return (
     <ListGroup>
