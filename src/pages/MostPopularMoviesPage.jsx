@@ -14,7 +14,7 @@ const MostPopularMoviesPage = () => {
   );
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-4 d-flex">
       {isError && <h1>{error}</h1>}
 
       {isLoading && <Spinner />}
@@ -24,6 +24,7 @@ const MostPopularMoviesPage = () => {
           className="m-2"
           style={{ width: "10rem" }}
           onClick={() => setQuery("day")}
+          disabled={query === "day"}
         >
           För dagen
         </Button>
@@ -31,12 +32,13 @@ const MostPopularMoviesPage = () => {
           className="m-2"
           style={{ width: "10rem" }}
           onClick={() => setQuery("week")}
+          disabled={query === "week"}
         >
           För veckan
         </Button>
       </div>
 
-      <Row className="justify-content-center">
+      <Row className="justify-content-around">
         {data &&
           data.map((movie, i) => {
             return (

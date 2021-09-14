@@ -7,7 +7,7 @@ import PopularMovies from "../components/PopularMovies";
 import SearchForm from "../components/SearchForm";
 import TopRankedMovies from "../components/TopRankedMovies";
 import { useQueryContext } from "../contexts/QueryContextProvider";
-import HistoryList from '../components/HistoryList'
+import HistoryList from "../components/HistoryList";
 
 const HomePage = () => {
   const { setInputText } = useQueryContext();
@@ -21,14 +21,18 @@ const HomePage = () => {
 
   return (
     <Container>
-      <HistoryList />
       <SearchForm handleFormSubmit={handleFormSubmit} />
+      <div className="d-flex">
+      <div style={{width: '80%'}}>
       <h3 className="mt-5">Filmer på bio just nu</h3>
       <CinemaMovies />
       <h3 className="mt-5">Populäraste filmerna</h3>
       <PopularMovies />
       <h3 className="mt-5">Topprankade filmer</h3>
       <TopRankedMovies />
+      </div>
+       <HistoryList />  
+      </div>
     </Container>
   );
 };

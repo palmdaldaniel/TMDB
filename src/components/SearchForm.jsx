@@ -16,7 +16,7 @@ const SearchForm = ({ handleFormSubmit }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="m-3">
+    <Form onSubmit={handleSubmit} className="m-3" style={{minWidth: '70%'}}>
       <Form.Group className="mb-3" controlId="search">
         <Form.Control
           className="mb-3"

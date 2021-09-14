@@ -14,7 +14,12 @@ const GenrePage = () => {
     { page: 1 },
     { page: Number }
   );
+  
+
+    console.log(searchParams);
+
   const [page, setPage] = useState(searchParams.page);
+ 
 
   const { id } = useParams();
 

@@ -8,6 +8,7 @@ import Spinner from "../components/Spinner";
 import MovieCard from "./MovieCard";
 
 import { Row, Col } from "react-bootstrap";
+import HomePageCard from '../components/HomePageCard'
 
 const CinemaMovies = () => {
   // fetch movies that is currently playing on cinema in sweden
@@ -21,12 +22,12 @@ const CinemaMovies = () => {
   return (
     <Container>
       {isLoading && <Spinner />}
-      <Row>
+      <Row className='justify-content-around'>
         {data &&
-          data.results.slice(0, 4).map((movie, i) => {
+          data.results.slice(0, 5).map((movie, i) => {
             return (
-              <Col key={i} sm={12} md={3}>
-                <MovieCard movie={movie} />
+              <Col key={i} sm={12} md={2}>
+                <HomePageCard movie={movie} />
               </Col>
             );
           })}

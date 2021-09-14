@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useQuery } from "react-query";
 import { getTopRated } from "../services/TMDBAPI";
 import Spinner from "../components/Spinner";
-import MovieCard from "./MovieCard";
+import HomePageCard from "./HomePageCard";
 const TopRankedMovies = () => {
 
   // fetch movies that is top ranked in sweden
@@ -18,12 +18,12 @@ const TopRankedMovies = () => {
   return (
     <Container>
       {isLoading && <Spinner />}
-      <Row>
+      <Row className='justify-content-around'>
         {data &&
-          data.results.slice(0, 4).map((movie, i) => {
+          data.results.slice(0, 5).map((movie, i) => {
             return (
-              <Col key={i} sm={12} md={3}>
-                <MovieCard movie={movie} />
+              <Col key={i} sm={12} md={2}>
+                <HomePageCard movie={movie} />
               </Col>
             );
           })}

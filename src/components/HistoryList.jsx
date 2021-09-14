@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const HistoryList = () => {
-  const [value] = useLocalStorage("movies");
+  const [value] = useLocalStorage("movies");    
 
   return (
-    <ListGroup>
+    <ListGroup className="mt-5 p-4">
       {value &&
         value.map((movie, i) => {
           return (
