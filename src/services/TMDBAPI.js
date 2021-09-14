@@ -106,7 +106,6 @@ export const getMovieById = async (id) => {
 
 //get 5 most popular similar movies,
 const getSimalarMovies = async (movieId) => {
-  console.log(movieId);
 
   const data = await get(
     `/movie/${movieId}/similar?api_key=0dd7b23e90e1f5fb99986582b77937d0&language=en-US`
@@ -120,6 +119,7 @@ const getMoviesForActor = async (id) => {
   const data = await get(
     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_people=${id}`
   );
+
   return data.data;
 };
 

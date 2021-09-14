@@ -6,14 +6,26 @@ import { getMovieById } from "../services/TMDBAPI";
 import ActorsList from "../components/ActorsList";
 import { prefix } from "../services/TMDBAPI";
 import { Link } from "react-router-dom";
-import { childNodes } from "dom-helpers";
+
+import  useLocalStorage from "../hooks/useLocalStorage";
 
 const MoviePage = () => {
   const { id } = useParams();
-
   const { data, isLoading, isError, error } = useQuery(["movie", id], () =>
     getMovieById(id)
   );
+
+
+  // save browshistory history to local storage
+
+  useLocalStorage('movies', data?.movie['original_title'] )
+
+  
+
+
+
+
+
 
   if (isError) return <div>{error}</div>;
 
@@ -30,6 +42,7 @@ const MoviePage = () => {
               variant="top"
               style={{ width: "200px", height: "100%" }}
               src={`${prefix}${data.movie["poster_path"]}`}
+              alt="Profile image"
             />
             <Card.Body className="align-self-end pb-0">
               <Card.Title>{data.movie.title}</Card.Title>
@@ -43,7 +56,7 @@ const MoviePage = () => {
         {data &&
           data.related.map((movie, i) => (
             <ListGroup.Item key={i}>
-              <Link to={`/movie/${movie.id}`}>{movie['original_title']}</Link>
+              <Link to={`/movie/${movie.id}`}>{movie["original_title"]}</Link>
             </ListGroup.Item>
           ))}
       </ListGroup>
