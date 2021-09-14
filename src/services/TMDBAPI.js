@@ -61,9 +61,8 @@ export const getPopular = async (query) => {
 
   // sort data in ascending order based on vote average cause there are nog flag in the trending endpoint
   const sortedData = sortInAscOrder(results);
-  
 
-  return sortedData
+  return sortedData;
 };
 
 /**
@@ -85,7 +84,6 @@ export const getGenres = async () => {
 };
 
 //get movies by genre
-//https://api.themoviedb.org/3/discover/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&with_genres=35&page=10
 export const getMoviesInGenre = async (genreId, page) => {
   const data = await get(
     `/discover/movie?api_key=${apiKey}&with_genres=${genreId}&page=${page}`
@@ -99,7 +97,22 @@ export const getMovieById = async (id) => {
   const data = await get(
     `/movie/${id}?&append_to_response=credits&api_key=${apiKey}`
   );
-  return data.data;
+
+  const similar = await getSimalarMovies(id);
+  
+
+  return {related: similar, movie: data.data};
+};
+
+//get 5 most popular similar movies,
+const getSimalarMovies = async (movieId) => {
+  console.log(movieId);
+
+  const data = await get(
+    `/movie/${movieId}/similar?api_key=0dd7b23e90e1f5fb99986582b77937d0&language=en-US`
+  );
+  // return the top 5 most popular movies 
+  return sortInAscOrder(data.data.results).slice(0,5);
 };
 
 // is called in getActorById
