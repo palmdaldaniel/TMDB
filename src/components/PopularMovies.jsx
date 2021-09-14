@@ -8,9 +8,11 @@ import MovieCard from "./MovieCard";
 
 
 const PopularMovies = () => {
-  const { data, isLoading, isError, error } = useQuery("popular", getPopular);
+  const { data, isLoading, isError, error } = useQuery("popular", () => getPopular('week'));
   
   if (isError) return <div>{error}</div>;
+
+  console.log(data, error);
 
   return (
     <Container>

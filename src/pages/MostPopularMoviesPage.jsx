@@ -15,8 +15,7 @@ const MostPopularMoviesPage = () => {
     getPopular(query)
   );
 
-  // sort by asc flag does not work on trending movies.
-  //Function sortInAscOrder runs and displays movies in ascending order by "vote-averag"
+  // sort by asc flag does not work on trending movies. Function sortInAscOrder runs and displays movies in ascending order by "vote-averag"
   useEffect(() => {
     if (data) {
       setSortedData(sortInAscOrder(data.results));
