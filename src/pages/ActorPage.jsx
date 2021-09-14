@@ -15,7 +15,7 @@ const ActorPage = () => {
     getActorById(id)
   );
 
-  console.log(data?.movies);
+
   return (
     <Container>
       {isError && <div>{error}</div>}

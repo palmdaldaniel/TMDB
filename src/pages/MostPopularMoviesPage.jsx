@@ -5,22 +5,13 @@ import { Container, Col, Row } from "react-bootstrap";
 import { useQuery } from "react-query";
 import { getPopular } from "../services/TMDBAPI";
 import Spinner from "../components/Spinner";
-import { sortInAscOrder } from "../utils/sortArrayInAsc";
 
 const MostPopularMoviesPage = () => {
   const [query, setQuery] = useState("day");
-  const [sortedData, setSortedData] = useState([]);
 
   const { data, isLoading, isError, error } = useQuery(["popular", query], () =>
     getPopular(query)
   );
-
-  // sort by asc flag does not work on trending movies. Function sortInAscOrder runs and displays movies in ascending order by "vote-averag"
-  useEffect(() => {
-    if (data) {
-      setSortedData(sortInAscOrder(data.results));
-    }
-  }, [data]);
 
   return (
     <Container className="mt-4">
@@ -46,8 +37,8 @@ const MostPopularMoviesPage = () => {
       </div>
 
       <Row className="justify-content-center">
-        {sortedData &&
-          sortedData.map((movie, i) => {
+        {data &&
+          data.map((movie, i) => {
             return (
               <Col
                 key={i}

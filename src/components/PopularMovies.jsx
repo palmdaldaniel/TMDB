@@ -6,20 +6,19 @@ import { getPopular } from "../services/TMDBAPI";
 import Spinner from "../components/Spinner";
 import MovieCard from "./MovieCard";
 
-
 const PopularMovies = () => {
-  const { data, isLoading, isError, error } = useQuery("popular", () => getPopular('week'));
-  
-  if (isError) return <div>{error}</div>;
+  const { data, isLoading, isError, error } = useQuery("popular", () =>
+    getPopular("week")
+  );
 
-  console.log(data, error);
+  if (isError) return <div>{error}</div>;
 
   return (
     <Container>
       {isLoading && <Spinner />}
       <Row>
         {data &&
-          data.results.slice(0, 4).map((movie, i) => {
+          data.slice(0, 4).map((movie, i) => {
             return (
               <Col key={i} sm={12} md={3}>
                 <MovieCard movie={movie} />

@@ -6,10 +6,10 @@
  */
 
 // prefix for relative img path
-export const prefix = "https://image.tmdb.org/t/p/w400/"
+export const prefix = "https://image.tmdb.org/t/p/w400/";
 
 import axios from "axios";
-
+import { sortInAscOrder } from "../utils/sortArrayInAsc";
 
 const apiKey = "0dd7b23e90e1f5fb99986582b77937d0";
 
@@ -52,18 +52,18 @@ https://api.themoviedb.org/3/trending/movie/day?api_key=0dd7b23e90e1f5fb99986582
  * 
  */
 
-
 export const getPopular = async (query) => {
-
-  console.log('in service', query)
-  /* const data = await get(
-    `/discover/movie?sort_by=vote_average.desc&vote_count.gte=1000&&region=se&api_key=${apiKey}`
+  const data = await get(
+    `/trending/movie/${query}?api_key=${apiKey}&sort_by=vote_average.desc&vote_count.gte=1000&&region=se`
   );
- */
 
-  const data = await get(`/trending/movie/${query}?api_key=${apiKey}&sort_by=vote_average.desc&vote_count.gte=1000&&region=se`)
+  const { results } = data.data;
 
-  return data.data;
+  // sort data in ascending order based on vote average cause there are nog flag in the trending endpoint
+  const sortedData = sortInAscOrder(results);
+  
+
+  return sortedData
 };
 
 /**
@@ -124,9 +124,10 @@ export const getActorById = async (id) => {
 // https://api.themoviedb.org/3/search/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&query=Jack+Reacher
 
 export const getMoviesByQuery = async (query) => {
-
-  if(!query.q) return
-  const data = await get(`/search/movie?api_key=${apiKey}&query=${query.q}&page=${query.page}`);
+  if (!query.q) return;
+  const data = await get(
+    `/search/movie?api_key=${apiKey}&query=${query.q}&page=${query.page}`
+  );
 
   return data.data;
 };
