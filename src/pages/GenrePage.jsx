@@ -15,18 +15,15 @@ const GenrePage = () => {
     { page: Number }
   );
 
-  console.log('searchparamsPage >>', searchParams.page);
+  console.log("searchparamsPage >>", searchParams.page);
 
-   const [page, setPage] = useState(searchParams.page);
+  const [page, setPage] = useState(searchParams.page);
 
   const { id } = useParams();
 
   useEffect(() => {
     setSearchParams({ ...searchParams, page });
-    
   }, [page]);
-
-
 
   const { data, isError, isLoading, error, isPreviousData } = useQuery(
     ["genre", id, searchParams.page],
@@ -54,7 +51,7 @@ const GenrePage = () => {
           data.results.map((movie, i) => {
             return (
               <Col className="p-4" key={i} sm={12} md={3}>
-                <MovieCard movie={movie} />{" "}
+                <MovieCard movie={movie} />
               </Col>
             );
           })}
