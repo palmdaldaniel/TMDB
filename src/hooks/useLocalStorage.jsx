@@ -25,10 +25,10 @@ const useLocalStorage = (key, defaultValue = null) => {
       // check if item exists in our stored values
       //find index returns -1 if not item passed the test.
       const exists = values.findIndex((value) => value.id === defaultValue.id);
+      
       if (exists !== -1) return;
 
       // if value.length is bigger than 10 item, remove the last one and add the newest val  to the top.
-  
       if (values.length > 9) {
         values.pop();
         values.unshift(defaultValue);

@@ -23,7 +23,6 @@ const MoviesOnCinemaPage = () => {
             return (
               <Col
                 className="m-2"
-                style={{ maxHeight: "500px" }}
                 key={i}
                 sm={12}
                 md={4}

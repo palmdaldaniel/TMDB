@@ -7,8 +7,8 @@ const HistoryList = () => {
   const [value] = useLocalStorage("movies");    
 
   return (
-    <ListGroup className="mt-5 p-4">
-      {value && <h5>Senast kollade</h5>}
+    <ListGroup className="mt-5 p-4" style={{minWidth: '300px'}}>
+      {value && <h5>Historik</h5>}
       {value &&
         value.map((movie, i) => {
           return (

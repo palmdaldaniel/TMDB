@@ -14,22 +14,21 @@ const SearchForm = ({ handleFormSubmit, query }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="m-3">
+    <Form onSubmit={handleSubmit} className="mt-3">
       <Form.Group
-        className="d-flex
-      "
+        className="d-sm-flex"
         controlId="search"
       >
         <Form.Control
-          className="mx-auto m-1"
+          style={{width: '80%'}}
+          className="m-1"
           type="text"
           placeholder="Search for movie by title"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <Button className="m-1" type="submit" onSubmit={handleSubmit}>
-          {" "}
-          Search
+        <Button className="m-1 px-4" type="submit" onSubmit={handleSubmit}>
+          Sök! 🚀 
         </Button>
       </Form.Group>
     </Form>

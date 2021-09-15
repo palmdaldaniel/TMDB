@@ -22,7 +22,7 @@ const TopRankedMovies = () => {
         {data &&
           data.results.slice(0, 4).map((movie, i) => {
             return (
-              <Col key={i} md={6} lg={3} >
+              <Col key={i} xs={12} md={6} lg={3} >
                 <HomePageCard movie={movie} />
               </Col>
             );

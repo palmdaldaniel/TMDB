@@ -14,23 +14,21 @@ const MostPopularMoviesPage = () => {
   );
 
   return (
-    <Container className="mt-4 d-flex">
+    <Container className="mt-4 d-md-flex">
       {isError && <h1>{error}</h1>}
 
       {isLoading && <Spinner />}
 
       <div className="d-flex flex-column ">
         <Button
-          className="m-2"
-          style={{ width: "10rem" }}
+          className="my-2"
           onClick={() => setQuery("day")}
           disabled={query === "day"}
         >
           För dagen
         </Button>
         <Button
-          className="m-2"
-          style={{ width: "10rem" }}
+          className="my-2"
           onClick={() => setQuery("week")}
           disabled={query === "week"}
         >
@@ -45,9 +43,8 @@ const MostPopularMoviesPage = () => {
               <Col
                 key={i}
                 className="m-2"
-                style={{ maxHeight: "500px" }}
                 sm={12}
-                md={4}
+                md={6}
                 lg={3}
               >
                 <MovieCard movie={movie} />

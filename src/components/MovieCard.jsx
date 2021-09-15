@@ -6,11 +6,10 @@ import { prefix } from "../services/TMDBAPI";
 
 const MovieCard = ({ movie }) => {
   return (
-    <Card style={{ width: "18rem" }} className="bg-dark text-white">
+    <Card className="bg-dark text-white card-container">
       <Card.Img src={`${prefix}${movie["poster_path"]}`} />
       <Card.ImgOverlay className="d-flex flex-column justify-content-end">
         <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>{movie.overview.slice(0, 100)} ...</Card.Text>
         <Card.Text>{`Släpps: ${movie["release_date"]}`}</Card.Text>
         <Card.Text>{`Rating: ${movie["vote_average"]}`}</Card.Text>
         <Link to={`/movie/${movie.id}`}>
