@@ -37,6 +37,10 @@ const Searchpage = () => {
     setParams({ ...params, page, q: inputText });
   }, [page, inputText]);
 
+  useEffect(() => {
+    setInputText(params.q)
+  },[])
+
   if (isError) return <div>{error}</div>;
 
   return (

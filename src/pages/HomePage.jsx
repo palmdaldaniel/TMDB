@@ -14,6 +14,12 @@ const HomePage = () => {
 
   const history = useHistory();
 
+  useEffect(() => {
+
+    setInputText('')
+
+  },[])
+
   const handleFormSubmit = (query) => {
     setInputText(query);
     history.push("/search");

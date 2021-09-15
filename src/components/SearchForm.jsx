@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useHistory, useLocation } from "react-router";
-
-import { useQueryContext } from "../contexts/QueryContextProvider";
 
 const SearchForm = ({ handleFormSubmit, query }) => {
-  
-  
-  //const { inputText } = useQueryContext();
+  const [text, setText] = useState("");
 
-  const [text, setText] = useState(query);
+  useEffect(() => {
+    setText(query);
+  }, [query]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

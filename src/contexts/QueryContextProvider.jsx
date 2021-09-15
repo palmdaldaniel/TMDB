@@ -9,8 +9,7 @@ export const useQueryContext = () => {
 };
 
 const QueryContextProvider = ({ children }) => {
-  const [inputText, setInputText] = useState("");
- 
+  const [inputText, setInputText] = useState(""); 
 
   const values = {
     inputText,
