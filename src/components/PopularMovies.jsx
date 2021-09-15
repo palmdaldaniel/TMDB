@@ -14,19 +14,19 @@ const PopularMovies = () => {
   if (isError) return <div>{error}</div>;
 
   return (
-    <Container>
+    <>
       {isLoading && <Spinner />}
-      <Row className='justify-content-around'>
+      <Row className='justify-content-sm-around'>
         {data &&
-          data.slice(0, 5).map((movie, i) => {
+          data.slice(0, 4).map((movie, i) => {
             return (
-              <Col key={i} sm={12} md={2}>
+              <Col key={i} md={6} lg={3}>
                 <HomePageCard movie={movie} />
               </Col>
             );
           })}
       </Row>
-    </Container>
+    </>
   );
 };
 

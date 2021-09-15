@@ -10,7 +10,8 @@ const useLocalStorage = (key, defaultValue = null) => {
 
   useEffect(() => {
     let values = [];
-    // don't run this one if defaultValue is not set yeat
+
+    // don't run if defaultValue is not set yeat
     if (!defaultValue) return;
 
     const jsonValue = localStorage.getItem(key);

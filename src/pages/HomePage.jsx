@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 
@@ -22,16 +22,16 @@ const HomePage = () => {
   return (
     <Container>
       <SearchForm handleFormSubmit={handleFormSubmit} />
-      <div className="d-flex">
-      <div style={{width: '80%'}}>
-      <h3 className="mt-5">Filmer på bio just nu</h3>
-      <CinemaMovies />
-      <h3 className="mt-5">Populäraste filmerna</h3>
-      <PopularMovies />
-      <h3 className="mt-5">Topprankade filmer</h3>
-      <TopRankedMovies />
-      </div>
-       <HistoryList />  
+      <div className="d-md-flex justify-content-md-around">
+        <div>
+          <h3 className="mt-5">Filmer på bio just nu</h3>
+          <CinemaMovies />
+          <h3 className="mt-5">Populäraste filmerna</h3>
+          <PopularMovies />
+          <h3 className="mt-5">Topprankade filmer</h3>
+          <TopRankedMovies />
+        </div>
+        <HistoryList />
       </div>
     </Container>
   );
