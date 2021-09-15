@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 
@@ -10,7 +10,7 @@ import { useQueryContext } from "../contexts/QueryContextProvider";
 import HistoryList from "../components/HistoryList";
 
 const HomePage = () => {
-  const { setInputText } = useQueryContext();
+  const { inputText, setInputText } = useQueryContext();
 
   const history = useHistory();
 
@@ -21,7 +21,7 @@ const HomePage = () => {
 
   return (
     <Container>
-      <SearchForm handleFormSubmit={handleFormSubmit} />
+      <SearchForm query={inputText} handleFormSubmit={handleFormSubmit} />
       <div className="d-md-flex justify-content-md-around">
         <div>
           <h3 className="mt-5">Filmer på bio just nu</h3>

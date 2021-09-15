@@ -14,22 +14,23 @@ const GenrePage = () => {
     { page: 1 },
     { page: Number }
   );
-  
 
-    console.log(searchParams);
+  console.log('searchparamsPage >>', searchParams.page);
 
-  const [page, setPage] = useState(searchParams.page);
- 
+   const [page, setPage] = useState(searchParams.page);
 
   const { id } = useParams();
 
   useEffect(() => {
-    setSearchParams({ page });
+    setSearchParams({ ...searchParams, page });
+    
   }, [page]);
 
+
+
   const { data, isError, isLoading, error, isPreviousData } = useQuery(
-    ["genre", id, page],
-    () => getMoviesInGenre(id, page),
+    ["genre", id, searchParams.page],
+    () => getMoviesInGenre(id, searchParams.page),
     {
       keepPreviousData: true,
     }
@@ -42,7 +43,7 @@ const GenrePage = () => {
       {isLoading && <Spinner />}
       {data && (
         <Pagination
-          page={page}
+          page={searchParams.page}
           setPage={setPage}
           isPreviousData={isPreviousData}
           total={data["total_pages"]}

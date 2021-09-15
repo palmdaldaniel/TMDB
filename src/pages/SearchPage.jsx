@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert } from "react-bootstrap";
 import SearchForm from "../components/SearchForm";
 import { useUrlSearchParams } from "use-url-search-params";
 import { getMoviesByQuery } from "../services/TMDBAPI";
@@ -14,7 +14,7 @@ const Searchpage = () => {
   const { inputText, setInputText } = useQueryContext();
 
   const [params, setParams] = useUrlSearchParams(
-    { page: 1, q: inputText },
+  { page: 1, q: inputText },
     { page: Number }
   );
 
@@ -28,11 +28,10 @@ const Searchpage = () => {
     }
   );
 
-
   const handleFormSubmit = (query) => {
     setInputText(query);
     setPage(1);
-  }
+  };
 
   useEffect(() => {
     setParams({ ...params, page, q: inputText });
@@ -42,11 +41,13 @@ const Searchpage = () => {
 
   return (
     <Container>
-      <SearchForm  handleFormSubmit={handleFormSubmit} />
+      <SearchForm query={params.q} handleFormSubmit={handleFormSubmit} />
       {isLoading && <Spinner />}
       <Row>
         {data && data.results.length === 0 ? (
-          <div>Sry nothing matches you search</div>
+          <Alert className="m-4 text-center" variant="warning">
+            <h3>Sorry nothing matches what you are looking for! 😞</h3>
+          </Alert>
         ) : (
           data?.results.map((movie, i) => {
             return (
@@ -58,7 +59,7 @@ const Searchpage = () => {
         )}
         {data && data["total_pages"] > 1 && (
           <Pagination
-            page={page}
+            page={params.page}
             setPage={setPage}
             isPreviousData={isPreviousData}
             total={data["total_pages"]}

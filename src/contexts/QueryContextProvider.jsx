@@ -3,20 +3,14 @@ import React, { useContext, createContext, useState, useEffect } from "react";
 const QueryContext = createContext();
 
 
-// custom hook to provide textinput from searchfrom to different components
+// custom hook to allow to share values between components
 export const useQueryContext = () => {
   return useContext(QueryContext);
 };
 
 const QueryContextProvider = ({ children }) => {
   const [inputText, setInputText] = useState("");
-
-
-
-
-
-
-  
+ 
 
   const values = {
     inputText,

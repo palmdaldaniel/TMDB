@@ -137,6 +137,9 @@ export const getActorById = async (id) => {
 // https://api.themoviedb.org/3/search/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&query=Jack+Reacher
 
 export const getMoviesByQuery = async (query) => {
+
+
+  
   if (!query.q) return;
   const data = await get(
     `/search/movie?api_key=${apiKey}&query=${query.q}&page=${query.page}`

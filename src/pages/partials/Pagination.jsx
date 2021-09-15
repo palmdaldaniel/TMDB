@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button'
 
 const Pagination = ({page, setPage, isPreviousData, total}) => {
 
+	
+
 	return (
 		<div className="pagination d-flex justify-content-between align-items-center m-4">
 			<Button
@@ -11,7 +13,7 @@ const Pagination = ({page, setPage, isPreviousData, total}) => {
 			>
 				Previous Page
 			</Button>
-
+				{/* paramspage is bind to the searchparams.page value */}
 			 <span>Current Page: {page}</span>
 
 			<Button
