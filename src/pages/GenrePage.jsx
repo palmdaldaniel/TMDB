@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import { useQuery } from "react-query";
 import { getMoviesInGenre } from "../services/TMDBAPI";
@@ -14,8 +14,6 @@ const GenrePage = () => {
     { page: 1 },
     { page: Number }
   );
-
-  console.log("searchparamsPage >>", searchParams.page);
 
   const [page, setPage] = useState(searchParams.page);
 

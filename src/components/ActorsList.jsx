@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, ListGroup, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { prefix } from "../services/TMDBAPI";
+import { prefix, placeHoldeImage } from "../services/TMDBAPI";
 
 const ActorsList = ({ actors }) => {
   return (
@@ -14,7 +14,7 @@ const ActorsList = ({ actors }) => {
                 width={50}
                 height={50}
                 roundedCircle
-                src={`${prefix}${actor["profile_path"]}`}
+                src={actor["profile_path"] ?  `${prefix}${actor["profile_path"]}` : `${placeHoldeImage}`}
               />
 
               <Link to={`/actor/${actor.id}`} className="mx-2">

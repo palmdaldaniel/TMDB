@@ -8,6 +8,10 @@
 // prefix for relative img path
 export const prefix = "https://image.tmdb.org/t/p/w400/";
 
+//place holder image
+export const placeHoldeImage = "https://via.placeholder.com/150"
+
+
 import axios from "axios";
 import { sortInAscOrder } from "../utils/sortArrayInAsc";
 
