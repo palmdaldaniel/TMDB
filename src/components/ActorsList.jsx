@@ -7,8 +7,8 @@ const ActorsList = ({ actors }) => {
   return (
     <ListGroup>
       <Row className='mb-5'>
-        {actors.slice(0, 12).map((actor, i) => (
-          <Col xs={12} md={6} lg={3} key={i} className="my-2">
+        {actors.slice(0, 9).map((actor, i) => (
+          <Col xs={12} md={6} lg={4} key={i} className="my-2">
             <ListGroup.Item className="d-flex align-items-center">
               <Image
                 width={50}
@@ -18,8 +18,7 @@ const ActorsList = ({ actors }) => {
               />
 
               <Link to={`/actor/${actor.id}`} className="mx-2">
-                {" "}
-                {actor["original_name"]}{" "}
+                {actor["original_name"]}
               </Link>
             </ListGroup.Item>
           </Col>
