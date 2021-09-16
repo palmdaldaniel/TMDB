@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Card, Button } from "react-bootstrap";
-import { prefix } from "../services/TMDBAPI";
+import { prefix, placeHoldeImage } from "../services/TMDBAPI";
 
 const MovieCard = ({ movie }) => {
   return (
-    <Card className="bg-dark text-white card-container">
-      <Card.Img src={`${prefix}${movie["poster_path"]}`} />
+    <Card className="bg-dark text-white card-container m-2">
+      <Card.Img src={movie["poster_path"] ? `${prefix}${movie["poster_path"]}` : `${placeHoldeImage}`} />
       <Card.ImgOverlay className="d-flex flex-column justify-content-end">
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>{`Släpps: ${movie["release_date"]}`}</Card.Text>

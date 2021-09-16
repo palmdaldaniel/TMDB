@@ -9,7 +9,7 @@
 export const prefix = "https://image.tmdb.org/t/p/w400/";
 
 //place holder image
-export const placeHoldeImage = "https://via.placeholder.com/150"
+export const placeHoldeImage = "https://via.placeholder.com/400"
 
 
 import axios from "axios";
