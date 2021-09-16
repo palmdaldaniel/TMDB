@@ -8,7 +8,7 @@ const HistoryList = () => {
 
   return (
     <ListGroup className="mt-5 p-4" style={{minWidth: '300px'}}>
-      {value && <h5>Historik</h5>}
+      {value && <h5>History</h5>}
       {value &&
         value.map((movie, i) => {
           return (

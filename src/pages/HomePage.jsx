@@ -29,11 +29,11 @@ const HomePage = () => {
       <SearchForm query={inputText} handleFormSubmit={handleFormSubmit} />
       <div className="d-md-flex justify-content-md-around">
         <div>
-          <h3 className="mt-5">Filmer på bio just nu</h3>
+          <h3 className="mt-5">Movies On Cinema Right Now</h3>
           <CinemaMovies />
-          <h3 className="mt-5">Populäraste filmerna</h3>
+          <h3 className="mt-5">Popular Movies</h3>
           <PopularMovies />
-          <h3 className="mt-5">Topprankade filmer</h3>
+          <h3 className="mt-5">Top Rated Movies</h3>
           <TopRankedMovies />
         </div>
         <HistoryList />

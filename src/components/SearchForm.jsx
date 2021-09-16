@@ -32,7 +32,7 @@ const SearchForm = ({ handleFormSubmit, query }) => {
           onChange={(e) => setText(e.target.value)}
         />
         <Button className="m-1 px-4" type="submit" onSubmit={handleSubmit}>
-          Sök! 🚀
+          Search! 🚀
         </Button>
       </Form.Group>
       {toggle && (
