@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, ListGroup } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import { useQuery } from "react-query";
 import { getGenres } from "../services/TMDBAPI";
 import Spinner from "../components/Spinner";
@@ -8,21 +8,51 @@ import Spinner from "../components/Spinner";
 const GenreListPage = () => {
   const { data, isError, isLoading, error } = useQuery("genres", getGenres);
 
-  if (isError) return <div className="text-center py-5">{error}</div>;
-
   return (
-    <Container className="d-flex justify-content-center">
-      <ListGroup variant="flush" style={{ width: "90%" }}>
-        {isLoading && <Spinner />}
-        {data &&
-          data.genres.map((genre, i) => (
-            <ListGroup.Item key={i}>
-              <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
-            </ListGroup.Item>
-          ))}
-      </ListGroup>
+    <Container>
+      {isError && <div className="text-center py-5">{error}</div>}
+      {isLoading && <Spinner />}
+      <h3 style={{ maxWidth: "80%" }} className="mx-auto m-2">Pick a genre you like!</h3>
+      <Table
+        striped
+        bordered
+        hover
+        className="mx-auto m-3"
+        style={{ maxWidth: "80%" }}
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data &&
+            data.genres.map((genre, i) => (
+              <tr key={i}>
+                <td style={{ width: "100px" }}> {i + 1}</td>
+                <td>
+                  <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
     </Container>
   );
 };
 
 export default GenreListPage;
+
+/* 
+<Container className="d-flex justify-content-center">
+{isLoading && <Spinner />}
+<ListGroup variant="flush" style={{ width: "90%" }}>
+  {data &&
+    data.genres.map((genre, i) => (
+      <ListGroup.Item key={i}>
+        <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
+      </ListGroup.Item>
+    ))}
+</ListGroup>
+</Container> */
