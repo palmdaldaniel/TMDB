@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
         <Card.Text>{`Rating: ${movie["vote_average"]}`}</Card.Text>
         <Link to={`/movie/${movie.id}`}>
           <Button style={{ width: "100%" }} variant="primary">
-            Gå till film 👣
+            Go To Movie 👣
           </Button>
         </Link>
       </Card.ImgOverlay>
