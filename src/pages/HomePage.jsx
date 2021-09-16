@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 
 import CinemaMovies from "../components/CinemaMovies";
@@ -15,7 +15,6 @@ const HomePage = () => {
   const history = useHistory();
 
   useEffect(() => {
-
     setInputText('')
 
   },[])
