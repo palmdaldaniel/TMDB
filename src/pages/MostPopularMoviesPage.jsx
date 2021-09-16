@@ -25,7 +25,7 @@ const MostPopularMoviesPage = () => {
           onClick={() => setQuery("day")}
           disabled={query === "day"}
         >
-          För dagen
+         Today
         </Button>
         <Button
           style={{ minWidth: "200px" }}
@@ -33,7 +33,7 @@ const MostPopularMoviesPage = () => {
           onClick={() => setQuery("week")}
           disabled={query === "week"}
         >
-          För veckan
+          This week
         </Button>
       </div>
 
