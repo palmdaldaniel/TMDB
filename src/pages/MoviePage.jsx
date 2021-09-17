@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { useQuery } from "react-query";
 import { getMovieById } from "../services/TMDBAPI";
 import ActorsList from "../components/ActorsList";
-import { prefix } from "../services/TMDBAPI";
+import { prefix, placeHoldeImage } from "../services/TMDBAPI";
 import { Link } from "react-router-dom";
 import Spinner from '../components/Spinner'
 
@@ -18,6 +18,8 @@ const MoviePage = () => {
 
   // save browshistory history to local storage
   useLocalStorage("movies", data?.movie);
+
+  console.log('data :>>', data);
 
   return (
     <Container>
@@ -33,7 +35,7 @@ const MoviePage = () => {
             <Card.Img
               variant="top"
               style={{ width: "100px", height: "100%" }}
-              src={`${prefix}${data.movie["poster_path"]}`}
+              src={data.movie["poster_path"] ? `${prefix}${data.movie["poster_path"]}` : placeHoldeImage }
               alt="Profile image"
             />
             <Card.Body className="align-self-end pb-0">
@@ -45,7 +47,8 @@ const MoviePage = () => {
           <ActorsList actors={data.movie.credits.cast} />
         </>
       )}
-      {data && (
+      
+      {data && data?.related.length > 0 && (
 
         <Table striped bordered hover>
           <thead>
@@ -55,8 +58,7 @@ const MoviePage = () => {
             </tr>
           </thead>
           <tbody>
-            {data &&
-              data.related.map((movie, i) => (
+            { data.related.map((movie, i) => (
                 <tr key={i}>
                   <td>{i + 1}</td>
                   <td>
