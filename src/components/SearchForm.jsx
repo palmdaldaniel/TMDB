@@ -11,7 +11,13 @@ const SearchForm = ({ handleFormSubmit, query }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (text.length < 3) {
+    // tmdb api does not like input such as "      " (empty strings)
+    // regex pattern below make sure there is atlast 1 char form alphabet included. 
+    const regExp = new RegExp('[a-zA-Z]+')
+  
+    const stringIsCorrect = regExp.test(text)
+   
+    if (!stringIsCorrect || text.length < 3) {
       setToggle(true);
       return;
     }

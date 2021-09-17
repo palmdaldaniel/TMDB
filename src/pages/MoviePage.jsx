@@ -19,8 +19,6 @@ const MoviePage = () => {
   // save browshistory history to local storage
   useLocalStorage("movies", data?.movie);
 
-  console.log('data :>>', data);
-
   return (
     <Container>
       {isError && <div>{error}</div>}

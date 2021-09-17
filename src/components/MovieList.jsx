@@ -9,7 +9,6 @@ const MovieList = ({ movies }) => {
       bordered
       hover
       className="mx-auto m-3"
-     
     >
       <thead>
         <tr>

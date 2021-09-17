@@ -41,11 +41,11 @@ const Searchpage = () => {
     setInputText(params.q)
   },[])
 
-  if (isError) return <div>{error}</div>;
-
+  
   return (
     <Container>
       <SearchForm query={params.q} handleFormSubmit={handleFormSubmit} />
+      {isError && <Alert>{error}</Alert>}
       {isLoading && <Spinner />}
       <Row>
         {data && data.results.length === 0 ? (

@@ -43,16 +43,3 @@ const GenreListPage = () => {
 };
 
 export default GenreListPage;
-
-/* 
-<Container className="d-flex justify-content-center">
-{isLoading && <Spinner />}
-<ListGroup variant="flush" style={{ width: "90%" }}>
-  {data &&
-    data.genres.map((genre, i) => (
-      <ListGroup.Item key={i}>
-        <Link to={`/genre/${genre.id}`}>{genre.name}</Link>
-      </ListGroup.Item>
-    ))}
-</ListGroup>
-</Container> */

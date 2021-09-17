@@ -13,7 +13,6 @@ const Pagination = ({page, setPage, isPreviousData, total}) => {
 			>
 				Previous Page
 			</Button>
-				{/* paramspage is bind to the searchparams.page value */}
 			 <span>Current Page: {page}</span>
 
 			<Button
@@ -22,7 +21,7 @@ const Pagination = ({page, setPage, isPreviousData, total}) => {
 						setPage(currentPage => currentPage + 1)
 					}
 				}}
-				//Disable the Next Page button until we know a next page is available
+				//make nextbutton unavailable until we new data or reached the last page.
 				disabled={isPreviousData || page === total}
 			>
 				Next Page

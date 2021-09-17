@@ -16,7 +16,6 @@ const ActorsList = ({ actors }) => {
                 roundedCircle
                 src={actor["profile_path"] ?  `${prefix}${actor["profile_path"]}` : `${placeHoldeImage}`}
               />
-
               <Link to={`/actor/${actor.id}`} className="mx-2">
                 {actor["original_name"]}
               </Link>

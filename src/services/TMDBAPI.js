@@ -2,29 +2,24 @@
  * TMDB REST API Service
  *
  * Reference: https://developers.themoviedb.org/3/getting-started/introduction
- *
  */
-
-// prefix for relative img path
-export const prefix = "https://image.tmdb.org/t/p/w400/";
-
-//place holder image
-export const placeHoldeImage = "https://via.placeholder.com/400"
-
 
 import axios from "axios";
 import { sortInAscOrder } from "../utils/sortArrayInAsc";
 
 const apiKey = "0dd7b23e90e1f5fb99986582b77937d0";
+// prefix for relative img path
+export const prefix = "https://image.tmdb.org/t/p/w400/";
+//place holder image
 
+export const placeHoldeImage = "https://via.placeholder.com/400"
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 /**
  *
  * Get get movies with various endpoints
- * returns a @promise
+ *
  */
-
 const get = async (endpoint) => {
   const data = await axios.get(endpoint);
   return data;
@@ -35,7 +30,6 @@ const get = async (endpoint) => {
  * get movies playing on cinema in sweden right now
  *
  */
-
 export const getNowPlaying = async () => {
   const data = await get(`/movie/now_playing?api_key=${apiKey}&region=se`);
   return data.data;
@@ -44,16 +38,6 @@ export const getNowPlaying = async () => {
 /**
  *
  * get most popular movies  in sweden right now
- *
- * // use this one instead
- * /discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10
- * https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc&vote_count.gte=10&api_key=0dd7b23e90e1f5fb99986582b77937d0
- * 
- * 
- * 
-https://api.themoviedb.org/3/trending/movie/day?api_key=0dd7b23e90e1f5fb99986582b77937d0
- * 
- * 
  */
 
 export const getPopular = async (query) => {
@@ -63,17 +47,15 @@ export const getPopular = async (query) => {
 
   const { results } = data.data;
 
-  // sort data in ascending order based on vote average cause there are nog flag in the trending endpoint
+  // sort data in ascending order based on vote average because there are no such flags for trending endpoints
   const sortedData = sortInAscOrder(results);
 
   return sortedData;
 };
 
 /**
- *
  * get top rated movies in sweden
  */
-
 export const getTopRated = async () => {
   const data = await get(`/movie/top_rated?api_key=${apiKey}&region=se`);
 
@@ -103,7 +85,6 @@ export const getMovieById = async (id) => {
   );
 
   const similar = await getSimalarMovies(id);
-  
 
   return {related: similar, movie: data.data};
 };
@@ -118,7 +99,6 @@ const getSimalarMovies = async (movieId) => {
   return sortInAscOrder(data.data.results).slice(0,5);
 };
 
-// is called in getActorById
 const getMoviesForActor = async (id) => {
   const data = await get(
     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_people=${id}`
@@ -128,7 +108,6 @@ const getMoviesForActor = async (id) => {
 };
 
 // get actor by id
-
 export const getActorById = async (id) => {
   const data = await get(`/person/${id}?api_key=${apiKey}`);
   // make request for the actors movies and combine in respons.
@@ -136,14 +115,9 @@ export const getActorById = async (id) => {
   return { movies, actor: data.data };
 };
 
-// query for movie
-
-// https://api.themoviedb.org/3/search/movie?api_key=0dd7b23e90e1f5fb99986582b77937d0&query=Jack+Reacher
-
+// serach for a movie by title
 export const getMoviesByQuery = async (query) => {
 
-
-  
   if (!query.q) return;
   const data = await get(
     `/search/movie?api_key=${apiKey}&query=${query.q}&page=${query.page}`

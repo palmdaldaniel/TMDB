@@ -42,7 +42,6 @@ const ActorPage = () => {
           </Card>
 
           <h3> 🌟 Starred in:</h3>
-
           <MovieList movies={data.movies} />
         </>
       )}

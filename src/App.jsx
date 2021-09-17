@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navigation from "./pages/partials/Navigation";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";

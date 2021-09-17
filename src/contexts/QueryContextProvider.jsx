@@ -1,9 +1,8 @@
-import React, { useContext, createContext, useState, useEffect } from "react";
+import React, { useContext, createContext, useState } from "react";
 
 const QueryContext = createContext();
 
-
-// custom hook to allow to share values between components
+// custom hook of context to minimize boilerplate code in components that share data
 export const useQueryContext = () => {
   return useContext(QueryContext);
 };

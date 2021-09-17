@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const useLocalStorage = (key, defaultValue = null) => {
   const [value, setValue] = useState(() => {
-    // get value from localStorage
+    // fetch value from localStorage
     const jsonValue = localStorage.getItem(key);
 
     return jsonValue ? JSON.parse(jsonValue) : defaultValue;
@@ -11,7 +11,7 @@ const useLocalStorage = (key, defaultValue = null) => {
   useEffect(() => {
     let values = [];
 
-    // don't run if defaultValue is not set yeat
+    // don't run if defaultValue is not set yet
     if (!defaultValue) return;
 
     const jsonValue = localStorage.getItem(key);
