@@ -16,7 +16,8 @@ The application was created from a list of strict requirements and user stories.
 - Mobile-first
 - Display related movies for a specific movie
 - Display cast for a specific movie
-- Display movies for a specific actor and so on
+- Display movies for a specific actor
+- etc ...
 
 ### Requirements: 
 - Custom hooks
